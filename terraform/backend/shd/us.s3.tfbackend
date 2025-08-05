@@ -1,0 +1,9 @@
+bucket = "terraform-state-cicd-gd-eu-west-1"
+key = "pim/gd_pim-test-scaff/shd/us.terraform.tfstate"
+dynamodb_table = "arn:aws:dynamodb:eu-west-1:851725517885:table/terraform-locks-cicd-gd-eu-west-1"
+region = "eu-west-1"
+encrypt = "true"
+kms_key_id = "05a3c0c8-a8a4-4bea-832b-b58153ca8408"
+assume_role = {
+    role_arn = "arn:aws:iam::851725517885:role/assumable-iac-cicd-role"
+}
