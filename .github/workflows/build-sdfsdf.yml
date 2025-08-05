@@ -1,0 +1,12 @@
+name: "[Pipeline] sdfsdf"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # SONARQUBE CODE-QUALITY EXAMPLE STEP
+  code-quality:
+    uses: kering-gucci-digital/gd_pe-platform-app-action/.github/workflows/code-quality-scan.yml@main
+    with:
+      directory: "./apps/sdfsdf"
+    secrets: inherit
