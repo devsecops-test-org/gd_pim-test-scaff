@@ -1,0 +1,16 @@
+sdlcEnv: qa
+name: sdfsdf
+image:
+  name: sdfsdf
+  tag: "0.0.1"
+serviceAccount:
+  name: sdfsdf
+  create: true
+  automountServiceAccountToken: true
+service:
+  port: 3000
+  type: ClusterIP
+containerPort: 3000
+
+domena: pim
+costam: sdfsdf
