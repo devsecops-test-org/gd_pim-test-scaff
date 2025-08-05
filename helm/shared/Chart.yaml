@@ -1,0 +1,10 @@
+apiVersion: v2
+name: "sdfsdf"
+description: "A Helm chart for the sdfsdf service in the pim domain"
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: helm-shared-library
+    version: "0.1.1-alpha-1"
+    repository: "oci://851725517885.dkr.ecr.us-east-1.amazonaws.com"
