@@ -1,0 +1,37 @@
+---
+name: "[TF] IaC Pipeline"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        required: true
+        default: dev
+        type: string
+      apply:
+        description: Allow plan apply
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  iac-validation:
+    uses: kering-gucci-digital/gd_pe-platform-app-action/.github/workflows/terraform-validate.yml@main
+    with:
+      environment: dev
+      account: nonprod
+      domain: "pim"
+      directory: ./terraform
+
+  iac-dev:
+    needs: iac-validation
+    uses: kering-gucci-digital/gd_pe-platform-app-action/.github/workflows/terraform-pipeline.yml@main
+    with:
+      environment: dev
+      account: nonprod
+      domain: "pim"
+      directory: ./terraform
+      apply: ${{ github.ref == 'refs/heads/main' }}
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
