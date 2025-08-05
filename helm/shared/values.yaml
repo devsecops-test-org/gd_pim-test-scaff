@@ -1,0 +1,27 @@
+image:
+  registry: "851725517885.dkr.ecr.us-east-1.amazonaws.com"
+
+replicaCount: 1
+
+global:
+  ingress:
+    className: alb
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+  volumes:
+    - name: aws-token
+      projected:
+        sources:
+          - serviceAccountToken:
+            audience: "sts.amazonaws.com"
+            expirationSeconds: 86400
+            path: token
+
+  volumeMounts:
+    - name: aws-token
+      mountPath: "/var/run/secrets/eks.amazonaws.com/serviceaccount/"
+
+something: "<no value>"
